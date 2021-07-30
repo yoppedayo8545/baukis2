@@ -6,9 +6,9 @@ class CreateStaffMembers < ActiveRecord::Migration[6.0]
       t.string :given_name, null: false # 名
       t.string :family_name_kana, null: false # 姓(カナ)
       t.string :given_name_kana, null: false # 名(カナ)
-      t.string :hashed_password, # パスワード
+      t.string :hashed_password # パスワード
       # t.date :start_date, null: false # 開始日
-      # t.date :end_date, # 終了日
+      # t.date :end_date # 終了日
       # t.boolean :suspended, null: false, default: false # 無効フラグ
 
       t.timestamps
