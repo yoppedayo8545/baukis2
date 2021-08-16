@@ -21,4 +21,9 @@ class Staff::SessionsController < Staff::Base
       render action: "new"
     end
   end
+
+  def destroy
+    session.delete(:staff_member_id)
+    redirect_to :staff_root
+  end
 end
