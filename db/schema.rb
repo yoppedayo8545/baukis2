@@ -30,10 +30,12 @@ ActiveRecord::Schema.define(version: 2021_07_30_020300) do
     t.string "given_name", null: false
     t.string "family_name_kana", null: false
     t.string "given_name_kana", null: false
+    t.string "hashed_password"
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "hashed_password"
-    t.string "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
     t.index "lower((email)::text)", name: "index_staff_members_on_LOWER_email", unique: true
     t.index ["family_name_kana", "given_name_kana"], name: "index_staff_members_on_family_name_kana_and_given_name_kana"
   end
