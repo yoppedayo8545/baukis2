@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  namespace :staff, path: "" do
-    root "top#index"
-    get "login" => "sessions#new", as: :login
-    resource :session, only: [ :create, :destroy ]
-    resource :account, except: [ :new, :create, :destroy ]
+  constraints host: "baukis2.example.com" do
+    namespace :staff, path: "" do
+      root "top#index"
+      get "login" => "sessions#new", as: :login
+      resource :session, only: [ :create, :destroy ]
+      resource :account, except: [ :new, :create, :destroy ]
+    end
   end
 
   namespace :admin do
