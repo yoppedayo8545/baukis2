@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  constraints host: "baukis2.example.com" do
-    namespace :staff, path: "" do
+  config = Rails.application.config.baukis2
+
+  constraints host: config[:staff][:host] do
+    namespace :staff, path: config[:staff][:path] do
       root "top#index"
       get "login" => "sessions#new", as: :login
       resource :session, only: [ :create, :destroy ]
@@ -8,11 +10,13 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :admin do
-    root "top#index"
-    get "login" => "sessions#new", as: :login
-    resource :session, only: [ :create, :destroy ]
-    resources :staff_members, path: "staff"
+  constraints host: config[:admin][:host] do
+    namespace :admin, path: config[:admin][:path]  do
+      root "top#index"
+      get "login" => "sessions#new", as: :login
+      resource :session, only: [ :create, :destroy ]
+      resources :staff_members, path: "staff"
+    end
   end
 
   namespace :customer do
