@@ -31,9 +31,9 @@ class Staff::SessionsController < Staff::Base
 
   private 
   def login_form_params
-    params.require(:admin_login_form).permit(:email, :paddword)
+    params.require(:staff_login_form).permit(:email, :password)
   end
-  
+
   def destroy
     session.delete(:staff_member_id)
     flash.notice = "ログアウトしました。"
