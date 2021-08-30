@@ -45,7 +45,7 @@ class Admin::StaffMembersController < Admin::Base
       :start_date, :end_date, :suspended  
     )
   end
-  
+
   def destroy
     staff_member = StaffMember.find(params[:id])
     staff_member.destroy!
