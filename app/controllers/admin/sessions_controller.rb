@@ -1,4 +1,6 @@
 class Admin::SessionsController < Admin::Base
+  skip_before_action :authorize
+
   def new
     if current_administrator
       redirect_to :admin_root
@@ -31,7 +33,7 @@ class Admin::SessionsController < Admin::Base
 
   private 
   def login_form_params
-    params.require(:admin_login_form).permit(:email, :paddword)
+    params.require(:admin_login_form).permit(:email, :password)
   end
   
   def destroy
