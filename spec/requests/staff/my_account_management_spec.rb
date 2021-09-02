@@ -5,7 +5,7 @@ describe "職員による自分のアカウントの管理", "ログイン前" d
 end
 
 describe "職員による自分のアカウント管理" do
-  before do 
+  before do
     post staff_session_url,
       params: {
         staff_login_form: {
