@@ -32,8 +32,7 @@ class Staff::SessionsController < Staff::Base
     end
   end
 
-  private 
-  def login_form_params
+  private def login_form_params
     params.require(:staff_login_form).permit(:email, :password)
   end
 
