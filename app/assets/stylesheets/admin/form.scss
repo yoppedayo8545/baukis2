@@ -1,7 +1,7 @@
 @import "colors";
 @import "dimensions";
 
-div#wrappar {
+div#wrapper {
   div#container {
     div#generic-form {
       width: 480px;
@@ -15,7 +15,7 @@ div#wrappar {
         div {
           padding: $wide;
           label {
-            display: none;
+            display: block;
             padding: $moderate 0;
           }
           label.required:after {
@@ -29,7 +29,7 @@ div#wrappar {
           font-size: $small;
           span.mark { color: $red; }
         }
-        div.check-boxs, div.radio-buttons {
+        div.check-boxes, div.radio-buttons {
           label {
             display: inline-block;
           }
@@ -39,6 +39,12 @@ div#wrappar {
           input[type="submit"] {
             padding: $wide $wide * 2;
           }
+        }
+        div.field_with_errors {
+          display: inline;
+          padding: 0;
+          label { color: $red; }
+          input { background-color: $pink; }
         }
       }
     }
