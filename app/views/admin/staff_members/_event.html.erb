@@ -1,0 +1,12 @@
+<tr>
+  <% unless @staff_member %>
+  <td>
+    <%= link_to(@staff_member.family_name + @staff_member.given_name,
+    [:admin, @staff_member, :staff_members ]) %>
+  </td>
+  <% end %>
+  <td><%= @staff_member.description%></td>
+  <td class="date">
+    <%= @staff_member.occurred_at.strftime("%Y/%m/%d %H:%M:%S")%>
+  </td>
+</tr>
