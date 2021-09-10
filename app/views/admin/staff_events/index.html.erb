@@ -21,7 +21,9 @@
       <th>種別</th>
       <th>日時</th>
     </tr>
-    <%= render partial: "event", collection: @events %>
+    <% @events.each do |event| %>
+      <%= StaffEventPresenter.new(event, self).table_row %>
+    <% end %>
     <% if @events.empty? %>
       <tr>
         <%= content_tag(:td, "記録がありません",
@@ -31,7 +33,7 @@
   </table>
 
   <%= paginate @events %>
-  
+
   <div class="links">
     <%= link_to "職員一覧", :admin_staff_members %>
   </div>
