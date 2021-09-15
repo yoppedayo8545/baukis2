@@ -2,7 +2,7 @@ class Staff::CustomerForm
   include ActiveModel::Model
 
   attr_accessor :customer
-  delegate :persisted?, to: :customer
+  delegate :persisted?, :save, to: :customer
 
   def initialize( customer = nil )
     @customer = customer
@@ -20,11 +20,7 @@ class Staff::CustomerForm
   end
 
   def save
-    ActiveRecord::Base.transaction do
-      customer.save!
-      customer.home_address.save!
-      customer.work_address.save!
-    end
+    customer.save
   end
 
   private def customer_params
