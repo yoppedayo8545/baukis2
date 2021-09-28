@@ -106,4 +106,19 @@ feature "職員による顧客管理" do
     expect(new_customer.home_address).to be_nil
     expect(new_customer.work_address).to be_nil
   end
+
+  scenario "職員が勤務先データのない既存顧客に会社名の情報を追加する" do
+    customer.work_address.destroy
+    click_link "顧客管理"
+    first("table.listing").click_link "編集"
+    
+    check "勤務先を入力する"
+    within("fieldset#work_address_fields") do
+      fill_in "会社名", with: "テスト"
+    end
+    click_button "更新"
+
+    customer.reload
+    expect(customer.work_address.company_name).to eq("テスト")
+  end
 end
