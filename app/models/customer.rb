@@ -15,4 +15,3 @@ class Customer < ApplicationRecord
     before: ->(obj) {Date.today},
     allow_blank: true
   }
-end
